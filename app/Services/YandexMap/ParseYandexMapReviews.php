@@ -8,7 +8,6 @@ use App\Contracts\Repositories\ReviewRepositoryContract;
 use App\Contracts\Services\Map\ParseMapReviewsContract;
 use App\DataTransferObjects\Review\CreateReviewDTO;
 use App\Exceptions\Map\PublishedAtParsingException;
-use App\Exceptions\Map\RatingParsingException;
 use App\Models\PlaceParsingLog;
 use App\Models\Review;
 use Facebook\WebDriver\Exception\NoSuchElementException;
@@ -84,17 +83,16 @@ class ParseYandexMapReviews implements ParseMapReviewsContract
             $image = $matches[1];
         }
 
-        $ratingElement = $reviewElement->findElement(
-            WebDriverBy::cssSelector('[itemprop="reviewRating"] [itemprop="ratingValue"]')
-        );
+        $rating = 0;
 
-        $ratingString = $ratingElement->getAttribute('content') ?? '';
+        try {
+            $ratingElement = $reviewElement->findElement(
+                WebDriverBy::cssSelector('[itemprop="reviewRating"] [itemprop="ratingValue"]')
+            );
 
-        if ($ratingString === '') {
-            throw new RatingParsingException($log->id);
+            $rating = floatval($ratingElement->getAttribute('content'));
+        } catch (NoSuchElementException $e) {
         }
-
-        $rating = floatval($ratingElement->getAttribute('content'));
 
         $publishedAtElement = $reviewElement->findElement(
             WebDriverBy::cssSelector('[itemprop="datePublished"]')
