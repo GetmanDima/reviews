@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Http\Requests\Place;
 
 use App\DataTransferObjects\Place\CreatePlaceDTO;
-use App\Rules\Place\UniquePlaceRule;
 use App\ValueObjects\Place\PlaceUrl;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -23,7 +22,6 @@ class StorePlaceRequest extends FormRequest
                 'required',
                 'string',
                 'regex:/^'.PlaceUrl::PATTERN.'$/',
-                new UniquePlaceRule,
             ],
         ];
     }

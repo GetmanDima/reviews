@@ -67,8 +67,8 @@ services:
   selenium:
     image: selenium/standalone-chrome:latest
     container_name: reviews_selenium_chrome
-    ports:
-      - "${SELENIUM_EXT_PORT:-4444}:4444"
+    expose:
+      - "4444"
     shm_size: 2gb
     networks:
       - reviews

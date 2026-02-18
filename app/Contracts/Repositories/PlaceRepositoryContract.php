@@ -28,6 +28,4 @@ interface PlaceRepositoryContract
     public function update(int $placeId, UpdatePlaceDTO $dto): Place;
 
     public function updateStatus(int $placeId, PlaceStatus $status): Place;
-
-    public function existsByUserAndMapId(int $userId, string $mapId): bool;
 }

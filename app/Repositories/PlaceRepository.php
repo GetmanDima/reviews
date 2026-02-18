@@ -63,11 +63,4 @@ class PlaceRepository implements PlaceRepositoryContract
 
         return $place;
     }
-
-    public function existsByUserAndMapId(int $userId, string $mapId): bool
-    {
-        return $this->place::where('user_id', $userId)
-            ->where('map_id', $mapId)
-            ->exists();
-    }
 }
