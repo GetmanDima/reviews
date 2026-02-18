@@ -12,6 +12,7 @@ use Facebook\WebDriver\Remote\DesiredCapabilities;
 use Facebook\WebDriver\Remote\RemoteWebDriver;
 use Facebook\WebDriver\WebDriverBy;
 use Facebook\WebDriver\WebDriverExpectedCondition;
+use Throwable;
 
 class YandexMapWebHandler implements MapWebHandlerContract
 {
@@ -58,19 +59,24 @@ class YandexMapWebHandler implements MapWebHandlerContract
             )
         );
 
-        $clickSortScript = "document.querySelector('.rating-ranking-view').click()";
-        $this->driver->executeScript($clickSortScript);
+        // Sort by date if possible
+        try {
+            $clickSortScript = "document.querySelector('.rating-ranking-view').click()";
+            $this->driver->executeScript($clickSortScript);
 
-        $this->driver->wait(5)->until(
-            WebDriverExpectedCondition::presenceOfElementLocated(
-                WebDriverBy::cssSelector('.rating-ranking-view__popup')
-            )
-        );
+            $this->driver->wait(5)->until(
+                WebDriverExpectedCondition::presenceOfElementLocated(
+                    WebDriverBy::cssSelector('.rating-ranking-view__popup')
+                )
+            );
 
-        $clickSortByDateScript = "document.querySelector('.rating-ranking-view__popup :nth-child(2)').click()";
-        $this->driver->executeScript($clickSortByDateScript);
+            $clickSortByDateScript = "document.querySelector('.rating-ranking-view__popup :nth-child(2)').click()";
+            $this->driver->executeScript($clickSortByDateScript);
 
-        sleep(2);
+            sleep(2);
+        } catch (Throwable $e) {
+            // Can continue parsing even if reviews not sorted on page
+        }
 
         $this->currentPageLastReviewNumber = self::REVIEWS_PER_PAGE;
     }
