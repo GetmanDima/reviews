@@ -1,0 +1,38 @@
+{
+    "create": {
+        "title": "Create Place",
+        "submit": "Create",
+        "url_example": "URL example",
+        "fields": {
+            "url": "Place URL"
+        },
+        "errors": {
+            "too_many_requests": "Too many place creation attempts. You can submit no more than 3 requests per minute."
+        }
+    },
+    "show": {
+        "title": "Place",
+        "processing_queued": "Place processing task has been added to the queue. Periodically refresh the page for the latest information.",
+        "card": {
+            "title": "Place Information",
+            "status": "Status",
+            "no_name": "No name",
+            "reviews_count": "Reviews",
+            "parsed_reviews_count": "Parsed reviews",
+            "not_found": "Place not found",
+            "fetch_error": "Failed to load place information"
+        }
+    },
+    "index": {
+        "title": "Place history",
+        "no_data": "No places found",
+        "fetch_error": "Failed to load places"
+    },
+    "statuses": {
+        "created": "Created",
+        "in_process": "In process",
+        "in_process_with_errors": "In process with errors",
+        "processed": "Processed",
+        "processed_with_errors": "Processed with errors"
+    }
+}

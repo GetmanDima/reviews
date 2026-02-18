@@ -1,0 +1,10 @@
+{
+    "title": "Reviews",
+    "no_reviews": "No reviews found",
+    "fetch_error": "Failed to load reviews",
+    "no_name": "No name",
+    "expand": "Expand",
+    "collapse": "Collapse",
+    "next": "Next",
+    "previous": "Previous"
+}

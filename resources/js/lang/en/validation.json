@@ -1,0 +1,13 @@
+{
+    "required": "Required",
+    "max_length": "Maximum length is",
+    "auth": {
+        "email": "Invalid Email",
+        "name": "The :field must contain only alphabetic characters",
+        "password": "Password must contain 8 - 64 characters",
+        "password_confirmation": "Password and confirmation must be equal"
+    },
+    "place": {
+        "url": "Invalid yandex map url"
+    }
+}

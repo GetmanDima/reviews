@@ -1,0 +1,9 @@
+{
+    "title": "Вход",
+    "submit": "Войти",
+    "fields": {
+        "email": "Email",
+        "password": "Пароль",
+        "remember": "Запомнить меня"
+    }
+}

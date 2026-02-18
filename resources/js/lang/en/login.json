@@ -1,0 +1,9 @@
+{
+    "title": "Login",
+    "submit": "Login",
+    "fields": {
+        "email": "Email",
+        "password": "Password",
+        "remember": "Remember me"
+    }
+}
