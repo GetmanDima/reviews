@@ -39,7 +39,7 @@ class AppServiceProvider extends ServiceProvider
         JsonResource::withoutWrapping();
 
         RateLimiter::for('api', callback: function (Request $request) {
-            return Limit::perMinute(maxAttempts: 60)->by($request->user()?->id ?: $request->ip());
+            return Limit::perMinute(maxAttempts: 120)->by($request->user()?->id ?: $request->ip());
         });
 
         RateLimiter::for('places.store', callback: function (Request $request) {

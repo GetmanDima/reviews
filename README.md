@@ -76,7 +76,7 @@ Setting up the development environment is straightforward with Docker.
     && docker exec -it reviews_app php artisan view:cache \
     && docker exec -it reviews_app php artisan event:cache \
     && docker exec -it reviews_app php artisan vendor:publish --tag=log-viewer-assets --force
-    docker exec -it reviews_app php artisan queue:work redis --sleep=3 --tries=3 --max-time=3600 --max-jobs=1000 --queue=default > storage/logs/queue.log 2>&1 &
+    docker exec reviews_app php artisan queue:work redis --sleep=3 --tries=3 --timeout=3600 --queue=default > storage/logs/queue.log 2>&1 &
     docker compose run --rm --service-ports node npm ci
     docker compose run --rm --service-ports node npm run build
     ```
